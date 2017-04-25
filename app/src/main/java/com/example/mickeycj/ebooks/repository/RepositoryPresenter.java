@@ -19,7 +19,7 @@ public class RepositoryPresenter {
         updateRepository();
     }
 
-    void updateRepository() {
+    private void updateRepository() {
         view.updateRepository();
     }
 }
