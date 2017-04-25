@@ -19,6 +19,16 @@ public class RepositoryPresenter {
         updateRepository();
     }
 
+    public void onSortByTitleClick() {
+        repository.sortByTitle();
+        updateRepository();
+    }
+
+    public void onSortByPublicationYearClick() {
+        repository.sortByPublicationYear();
+        updateRepository();
+    }
+
     private void updateRepository() {
         view.updateRepository();
     }

@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_repository"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/buttons_sort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_sort_by_title"
+            android:text="Sort By Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onSortByTitleClick"/>
+
+        <Button
+            android:id="@+id/button_sort_by_pub_year"
+            android:text="Sort By Publication Year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onSortByPublicationYearClick"/>
+    </LinearLayout>
+
     <ListView
         android:id="@+id/listview_book_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ListView>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_below="@id/buttons_sort" />
+</RelativeLayout>

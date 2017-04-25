@@ -18,11 +18,9 @@ import java.util.Observable;
  * Created by mickeycj on 20/4/2560.
  */
 
-public class JSONBookRepository extends Observable implements BookRepository {
+public class JSONBookRepository extends AbstractBookRepository {
 
     private static final String dataURL = "https://theory.cpe.ku.ac.th/~jittat/courses/sw-spec/ebooks/books.json";
-
-    private static BookRepository instance;
 
     public static BookRepository getInstance() {
         if (instance == null) {
@@ -31,15 +29,10 @@ public class JSONBookRepository extends Observable implements BookRepository {
         return instance;
     }
 
-    private ArrayList<Book> books;
-
     private JSONBookRepository() {
-        books = new ArrayList<>();
+        super();
         new JSONLoader().execute();
     }
-
-    @Override
-    public ArrayList<Book> getBooks() { return books; }
 
     private class JSONLoader extends AsyncTask<Void, Void, Void> {
 

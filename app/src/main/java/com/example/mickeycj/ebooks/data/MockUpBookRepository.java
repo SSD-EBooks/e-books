@@ -6,9 +6,7 @@ import java.util.ArrayList;
  * Created by mickeycj on 20/4/2560.
  */
 
-public class MockUpBookRepository implements BookRepository {
-
-    private static BookRepository instance;
+public class MockUpBookRepository extends AbstractBookRepository {
 
     public static BookRepository getInstance() {
         if (instance == null) {
@@ -17,10 +15,8 @@ public class MockUpBookRepository implements BookRepository {
         return instance;
     }
 
-    private ArrayList<Book> books;
-
     private MockUpBookRepository() {
-        books = new ArrayList<>();
+        super();
         books.add(new Book(471,
                 2017,
                 24.95,
@@ -47,7 +43,4 @@ public class MockUpBookRepository implements BookRepository {
                 "Design It!",
                 "https://imagery.pragprog.com/products/486/mkdsa_largebeta.jpg"));
     }
-
-    @Override
-    public ArrayList<Book> getBooks() { return books; }
 }

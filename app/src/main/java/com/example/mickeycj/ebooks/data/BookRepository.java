@@ -9,4 +9,8 @@ import java.util.ArrayList;
 public interface BookRepository {
 
     ArrayList<Book> getBooks();
+
+    void sortByTitle();
+
+    void sortByPublicationYear();
 }

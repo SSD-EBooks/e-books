@@ -2,10 +2,12 @@ package com.example.mickeycj.ebooks.repository;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.mickeycj.ebooks.R;
+import com.example.mickeycj.ebooks.data.AbstractBookRepository;
 import com.example.mickeycj.ebooks.data.Book;
 import com.example.mickeycj.ebooks.data.BookRepository;
 import com.example.mickeycj.ebooks.data.JSONBookRepository;
@@ -27,7 +29,7 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
         setContentView(R.layout.activity_repository);
 
         bookRepository = JSONBookRepository.getInstance();
-        ((JSONBookRepository) bookRepository).addObserver(this);
+        ((AbstractBookRepository) bookRepository).addObserver(this);
         presenter = new RepositoryPresenter(bookRepository, this);
 
         initViewHolders();
@@ -48,5 +50,13 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
     @Override
     public void update(Observable o, Object arg) {
         updateRepository();
+    }
+
+    public void onSortByTitleClick(View view) {
+        presenter.onSortByTitleClick();
+    }
+
+    public void onSortByPublicationYearClick(View view) {
+        presenter.onSortByPublicationYearClick();
     }
 }

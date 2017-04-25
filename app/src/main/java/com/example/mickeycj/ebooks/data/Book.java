@@ -41,6 +41,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Title: " + title;
+        return "\nTitle: " + title + "\n\nPublication Year: " + pubYear + "\n";
     }
 }
