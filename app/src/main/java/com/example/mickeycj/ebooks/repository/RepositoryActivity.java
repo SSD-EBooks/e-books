@@ -48,15 +48,9 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-        updateRepository();
-    }
+    public void update(Observable o, Object arg) { updateRepository(); }
 
-    public void onSortByTitleClick(View view) {
-        presenter.onSortByTitleClick();
-    }
+    public void onSortByTitleClick(View view) { presenter.onSortByTitleClick(); }
 
-    public void onSortByPublicationYearClick(View view) {
-        presenter.onSortByPublicationYearClick();
-    }
+    public void onSortByPublicationYearClick(View view) { presenter.onSortByPublicationYearClick(); }
 }
