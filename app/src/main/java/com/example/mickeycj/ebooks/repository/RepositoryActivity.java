@@ -9,39 +9,44 @@ import com.example.mickeycj.ebooks.R;
 import com.example.mickeycj.ebooks.data.Book;
 import com.example.mickeycj.ebooks.data.BookRepository;
 import com.example.mickeycj.ebooks.data.JSONBookRepository;
-import com.example.mickeycj.ebooks.data.MockUpBookRepository;
 
 import java.util.Observable;
 import java.util.Observer;
 
 public class RepositoryActivity extends AppCompatActivity implements RepositoryView, Observer {
     private BookRepository bookRepository;
+    private RepositoryPresenter presenter;
 
     private ArrayAdapter<Book> bookAdapter;
+
+    private ListView repositoryListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repository);
 
-        initListView();
-    }
-
-    private void initListView() {
         bookRepository = JSONBookRepository.getInstance();
         ((JSONBookRepository) bookRepository).addObserver(this);
-        updateListView();
+        presenter = new RepositoryPresenter(bookRepository, this);
+
+        initViewHolders();
+
+        presenter.start();
     }
 
-    private void updateListView() {
-        bookAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, bookRepository.getBooks());
+    private void initViewHolders() {
+        repositoryListView = (ListView) findViewById(R.id.listview_book_list);
+    }
 
-        ListView listView = (ListView) findViewById(R.id.listview_book_list);
-        listView.setAdapter(bookAdapter);
+    @Override
+    public void updateRepository() {
+        bookAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, bookRepository.getBooks());
+        repositoryListView.setAdapter(bookAdapter);
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        updateListView();
+        updateRepository();
     }
 }

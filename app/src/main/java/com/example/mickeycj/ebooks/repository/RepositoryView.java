@@ -5,4 +5,6 @@ package com.example.mickeycj.ebooks.repository;
  */
 
 public interface RepositoryView {
+
+    void updateRepository();
 }
