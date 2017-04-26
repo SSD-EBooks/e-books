@@ -1,35 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_repository"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.8">
+
+        <ListView
+            android:id="@+id/listview_book_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/buttons_sort"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_weight="0.2"
+        android:weightSum="1">
 
         <Button
             android:id="@+id/button_sort_by_title"
-            android:text="Sort By Title"
-            android:layout_width="wrap_content"
+            android:text="@string/sort_by_title"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
+            android:layout_weight="0.4"
             android:onClick="onSortByTitleClick"/>
 
         <Button
             android:id="@+id/button_sort_by_pub_year"
-            android:text="Sort By Publication Year"
-            android:layout_width="wrap_content"
+            android:text="@string/sort_by_pub_year"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
+            android:layout_weight="0.6"
             android:onClick="onSortByPublicationYearClick"/>
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/listview_book_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/buttons_sort" />
-</RelativeLayout>
+</LinearLayout>

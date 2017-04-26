@@ -52,7 +52,7 @@ public class JSONBookRepository extends AbstractBookRepository {
                     JSONObject jBook = jArray.getJSONObject(i);
                     books.add(new Book(jBook.getInt("id"),
                             jBook.getInt("pub_year"),
-                            jBook.getDouble("prize"),
+                            jBook.getDouble("price"),
                             jBook.getString("title"),
                             jBook.getString("img_url")));
                 }

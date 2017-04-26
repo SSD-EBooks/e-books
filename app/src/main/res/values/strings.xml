@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">EBooks</string>
+    <string name="sort_by_title">Sort By Title</string>
+    <string name="sort_by_pub_year">Sort By Publication Year</string>
 </resources>
