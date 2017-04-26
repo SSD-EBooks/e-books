@@ -20,15 +20,10 @@ public class UserPresenter {
         view.updateCart();
     }
 
-    public void onAddFundsClick(String amountStr) {
-        try {
-            double amount = Double.parseDouble(amountStr);
-            user.setFund(user.getFund() + amount);
-            view.clearAddFundAmount();
-            view.updateFund();
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
+    public void onAddFundsClick(double amount) {
+        user.setFund(user.getFund() + amount);
+        view.clearAddFundAmount();
+        view.updateFund();
     }
 
     public void onPurchaseClick() {

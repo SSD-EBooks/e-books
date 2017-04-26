@@ -18,18 +18,19 @@
             android:textSize="12pt"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="0.4"/>
+            android:layout_weight="0.45"/>
 
         <EditText
             android:id="@+id/edittext_add_amount"
+            android:digits="0123456789."
+            android:inputType="numberDecimal"
             android:hint="@string/add_amount"
             android:textSize="12pt"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3"/>
+            android:layout_weight="0.25"/>
 
         <Button
-            android:id="@+id/button_add_fund"
             android:text="@string/add_fund"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
@@ -52,7 +53,6 @@
             android:layout_weight="0.4"/>
 
         <Button
-            android:id="@+id/button_purchase"
             android:text="@string/purchase"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
@@ -60,7 +60,6 @@
             android:onClick="onPurchaseClick"/>
 
         <Button
-            android:id="@+id/button_clear_cart"
             android:text="@string/clear_cart"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
@@ -71,11 +70,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="0.975">
 
         <ListView
             android:id="@+id/listview_cart_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.02">
+
+        <Button
+            android:text="@string/to_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onBackClick"/>
     </LinearLayout>
 </LinearLayout>

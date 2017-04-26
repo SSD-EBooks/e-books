@@ -1,5 +1,7 @@
 package com.example.mickeycj.ebooks.user;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +29,7 @@ public class UserActivity extends AppCompatActivity implements UserView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        user = new User();
+        user = getIntent().getParcelableExtra("user");
         presenter = new UserPresenter(user, this);
 
         initViewHolders();
@@ -53,7 +55,7 @@ public class UserActivity extends AppCompatActivity implements UserView {
     }
 
     @Override
-    public String getAddFundAmount() { return addFundEditText.getText().toString(); }
+    public double getAddFundAmount() { return Double.parseDouble(addFundEditText.getText().toString()); }
 
     @Override
     public void clearAddFundAmount() { addFundEditText.setText(""); }
@@ -64,4 +66,10 @@ public class UserActivity extends AppCompatActivity implements UserView {
 
     public void onClearCartClick(View view) { presenter.onClearCartClick(); }
 
+    public void onBackClick(View view) {
+        Intent returnedIntent = new Intent();
+        returnedIntent.putExtra("user", user);
+        setResult(Activity.RESULT_OK, returnedIntent);
+        finish();
+    }
 }

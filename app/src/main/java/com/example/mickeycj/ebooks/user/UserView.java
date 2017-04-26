@@ -10,7 +10,7 @@ public interface UserView {
 
     void updateCart();
 
-    String getAddFundAmount();
+    double getAddFundAmount();
 
     void clearAddFundAmount();
 }

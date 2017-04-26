@@ -1,10 +1,13 @@
 package com.example.mickeycj.ebooks.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by mickeycj on 20/4/2560.
  */
 
-public class Book {
+public class Book implements Parcelable {
     private int id;
     private int pubYear;
     private double price;
@@ -17,6 +20,14 @@ public class Book {
         this.price = price;
         this.title = title;
         this.imgURL = imgURL;
+    }
+
+    protected Book(Parcel in) {
+        id = in.readInt();
+        pubYear = in.readInt();
+        price = in.readDouble();
+        title = in.readString();
+        imgURL = in.readString();
     }
 
     public int getId() { return id; }
@@ -43,4 +54,24 @@ public class Book {
     public String toString() {
         return "\nTitle: " + title + "\n\nPublication Year: " + pubYear + "\n";
     }
+
+    @Override
+    public int describeContents() { return 0; }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(pubYear);
+        dest.writeDouble(price);
+        dest.writeString(title);
+        dest.writeString(imgURL);
+    }
+
+    public static final Creator<Book> CREATOR = new Creator<Book>() {
+        @Override
+        public Book createFromParcel(Parcel in) { return new Book(in); }
+
+        @Override
+        public Book[] newArray(int size) { return new Book[size]; }
+    };
 }

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">EBooks</string>
+    <string name="to_books">Books</string>
+    <string name="to_user">User</string>
+    <string name="to_main">Back</string>
     <string name="add_amount">Amount</string>
     <string name="add_fund">Add Funds</string>
     <string name="cart_text">CART</string>
