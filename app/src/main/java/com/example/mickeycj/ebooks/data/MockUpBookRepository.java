@@ -42,5 +42,6 @@ public class MockUpBookRepository extends AbstractBookRepository {
                 26.95,
                 "Design It!",
                 "https://imagery.pragprog.com/products/486/mkdsa_largebeta.jpg"));
+        results.addAll(books);
     }
 }

@@ -19,6 +19,23 @@ public class RepositoryPresenter {
         view.updateRepository();
     }
 
+    public void onSearchByTitleClick(String title) {
+        repository.clearResults();
+        repository.searchByTitle(title);
+        view.updateRepository();
+    }
+
+    public void onSearchByPublicationYear(String pubYearStr) {
+        repository.clearResults();
+        try {
+            int pubYear = Integer.parseInt(pubYearStr);
+            repository.searchByPublicationYear(pubYear);
+            view.updateRepository();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void onSortByTitleClick() {
         repository.sortByTitle();
         view.updateRepository();

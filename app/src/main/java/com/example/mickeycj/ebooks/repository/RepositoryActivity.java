@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.mickeycj.ebooks.R;
@@ -22,6 +23,7 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
     private ArrayAdapter<Book> bookAdapter;
 
     private ListView repositoryListView;
+    private EditText searchBarEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
 
     private void initViewHolders() {
         repositoryListView = (ListView) findViewById(R.id.listview_book_list);
+        searchBarEditText = (EditText) findViewById(R.id.edittext_search_bar);
     }
 
     @Override
@@ -49,6 +52,10 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
 
     @Override
     public void update(Observable o, Object arg) { updateRepository(); }
+
+    public void onSearchByTitleClick(View view) { presenter.onSearchByTitleClick(searchBarEditText.getText().toString()); }
+
+    public void onSearchByPublicationYearClick(View view) { presenter.onSearchByPublicationYear(searchBarEditText.getText().toString()); }
 
     public void onSortByTitleClick(View view) { presenter.onSortByTitleClick(); }
 

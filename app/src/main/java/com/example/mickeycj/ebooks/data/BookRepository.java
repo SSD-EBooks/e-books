@@ -10,7 +10,13 @@ public interface BookRepository {
 
     ArrayList<Book> getBooks();
 
+    void searchByTitle(String title);
+
+    void searchByPublicationYear(int pubYear);
+
     void sortByTitle();
 
     void sortByPublicationYear();
+
+    void clearResults();
 }

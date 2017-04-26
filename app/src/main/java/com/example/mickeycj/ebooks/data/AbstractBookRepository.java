@@ -12,7 +12,8 @@ public abstract class AbstractBookRepository extends Observable implements BookR
 
     protected static BookRepository instance;
 
-    protected ArrayList<Book> books;
+    protected final ArrayList<Book> books;
+    protected final ArrayList<Book> results;
 
     private boolean isSortedByTitle;
     private boolean isSortedByPublicationYear;
@@ -20,15 +21,34 @@ public abstract class AbstractBookRepository extends Observable implements BookR
 
     protected AbstractBookRepository() {
         books = new ArrayList<>();
+        results = new ArrayList<>();
     }
 
     @Override
-    public ArrayList<Book> getBooks() { return books; }
+    public ArrayList<Book> getBooks() { return results; }
+
+    @Override
+    public void searchByTitle(String title) {
+        for (Book book : books) {
+            if (book.getTitle().contains(title)) {
+                results.add(book);
+            }
+        }
+    }
+
+    @Override
+    public void searchByPublicationYear(int pubYear) {
+        for (Book book : books) {
+            if (book.getPubYear() == pubYear) {
+                results.add(book);
+            }
+        }
+    }
 
     @Override
     public void sortByTitle() {
         if (!isSortedByTitle || isSortedByTitle && !isInAscendingOrder) {
-            books.sort(new Comparator<Book>() {
+            results.sort(new Comparator<Book>() {
                 @Override
                 public int compare(Book b1, Book b2) {
                     return b1.getTitle().toLowerCase().compareTo(b2.getTitle().toLowerCase());
@@ -36,7 +56,7 @@ public abstract class AbstractBookRepository extends Observable implements BookR
             });
             isInAscendingOrder = true;
         } else {
-            books.sort(new Comparator<Book>() {
+            results.sort(new Comparator<Book>() {
                 @Override
                 public int compare(Book b1, Book b2) {
                     return b2.getTitle().toLowerCase().compareTo(b1.getTitle().toLowerCase());
@@ -51,7 +71,7 @@ public abstract class AbstractBookRepository extends Observable implements BookR
     @Override
     public void sortByPublicationYear() {
         if (!isSortedByPublicationYear || isSortedByPublicationYear && !isInAscendingOrder) {
-            books.sort(new Comparator<Book>() {
+            results.sort(new Comparator<Book>() {
                 @Override
                 public int compare(Book b1, Book b2) {
                     return b1.getPubYear() - b2.getPubYear();
@@ -59,7 +79,7 @@ public abstract class AbstractBookRepository extends Observable implements BookR
             });
             isInAscendingOrder = true;
         } else {
-            books.sort(new Comparator<Book>() {
+            results.sort(new Comparator<Book>() {
                 @Override
                 public int compare(Book b1, Book b2) {
                     return b2.getPubYear() - b1.getPubYear();
@@ -69,5 +89,11 @@ public abstract class AbstractBookRepository extends Observable implements BookR
         }
         isSortedByTitle = false;
         isSortedByPublicationYear = true;
+    }
+
+    @Override
+    public void clearResults() {
+        results.clear();
+        isSortedByTitle = isSortedByPublicationYear = isInAscendingOrder = false;
     }
 }

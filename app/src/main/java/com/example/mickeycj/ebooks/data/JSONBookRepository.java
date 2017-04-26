@@ -65,6 +65,7 @@ public class JSONBookRepository extends AbstractBookRepository {
         @Override
         protected void onPostExecute(Void param) {
             if (!books.isEmpty()) {
+                results.addAll(books);
                 setChanged();
                 notifyObservers();
             }

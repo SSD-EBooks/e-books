@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">EBooks</string>
+    <string name="search_bar_hint">Search here</string>
+    <string name="search_by_title">Search Title</string>
+    <string name="search_by_pub_year">Search Publication Year</string>
     <string name="sort_by_title">Sort By Title</string>
     <string name="sort_by_pub_year">Sort By Publication Year</string>
 </resources>
