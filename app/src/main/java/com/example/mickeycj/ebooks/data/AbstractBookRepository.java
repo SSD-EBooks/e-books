@@ -29,6 +29,7 @@ public abstract class AbstractBookRepository extends Observable implements BookR
 
     @Override
     public void searchByTitle(String title) {
+        clearResults();
         for (Book book : books) {
             if (book.getTitle().contains(title)) {
                 results.add(book);
@@ -38,6 +39,7 @@ public abstract class AbstractBookRepository extends Observable implements BookR
 
     @Override
     public void searchByPublicationYear(int pubYear) {
+        clearResults();
         for (Book book : books) {
             if (book.getPubYear() == pubYear) {
                 results.add(book);

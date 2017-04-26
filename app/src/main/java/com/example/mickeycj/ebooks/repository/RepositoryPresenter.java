@@ -20,13 +20,11 @@ public class RepositoryPresenter {
     }
 
     public void onSearchByTitleClick(String title) {
-        repository.clearResults();
         repository.searchByTitle(title);
         view.updateRepository();
     }
 
     public void onSearchByPublicationYear(String pubYearStr) {
-        repository.clearResults();
         try {
             int pubYear = Integer.parseInt(pubYearStr);
             repository.searchByPublicationYear(pubYear);
