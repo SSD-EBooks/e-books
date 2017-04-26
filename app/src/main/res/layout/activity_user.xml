@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_user"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.01"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/textview_fund_amount"
+            android:textSize="12pt"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"/>
+
+        <EditText
+            android:id="@+id/edittext_add_amount"
+            android:hint="@string/add_amount"
+            android:textSize="12pt"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"/>
+
+        <Button
+            android:id="@+id/button_add_fund"
+            android:text="@string/add_fund"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:onClick="onAddFundsClick"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.01"
+        android:weightSum="1">
+
+        <TextView
+            android:text="@string/cart_text"
+            android:textSize="12pt"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"/>
+
+        <Button
+            android:id="@+id/button_purchase"
+            android:text="@string/purchase"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:onClick="onPurchaseClick"/>
+
+        <Button
+            android:id="@+id/button_clear_cart"
+            android:text="@string/clear_cart"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:onClick="onClearCartClick"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/listview_cart_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</LinearLayout>

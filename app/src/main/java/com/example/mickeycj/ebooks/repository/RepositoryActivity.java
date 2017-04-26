@@ -22,8 +22,8 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
 
     private ArrayAdapter<Book> bookAdapter;
 
-    private ListView repositoryListView;
     private EditText searchBarEditText;
+    private ListView repositoryListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +40,8 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
     }
 
     private void initViewHolders() {
-        repositoryListView = (ListView) findViewById(R.id.listview_book_list);
         searchBarEditText = (EditText) findViewById(R.id.edittext_search_bar);
+        repositoryListView = (ListView) findViewById(R.id.listview_book_list);
     }
 
     @Override
@@ -51,11 +51,14 @@ public class RepositoryActivity extends AppCompatActivity implements RepositoryV
     }
 
     @Override
+    public String getTextFromSearchBar() { return searchBarEditText.getText().toString(); }
+
+    @Override
     public void update(Observable o, Object arg) { updateRepository(); }
 
-    public void onSearchByTitleClick(View view) { presenter.onSearchByTitleClick(searchBarEditText.getText().toString()); }
+    public void onSearchByTitleClick(View view) { presenter.onSearchByTitleClick(getTextFromSearchBar()); }
 
-    public void onSearchByPublicationYearClick(View view) { presenter.onSearchByPublicationYear(searchBarEditText.getText().toString()); }
+    public void onSearchByPublicationYearClick(View view) { presenter.onSearchByPublicationYear(getTextFromSearchBar()); }
 
     public void onSortByTitleClick(View view) { presenter.onSortByTitleClick(); }
 
