@@ -66,10 +66,11 @@ public class UserActivity extends AppCompatActivity implements UserView {
 
     public void onClearCartClick(View view) { presenter.onClearCartClick(); }
 
-    public void onBackClick(View view) {
+    @Override
+    public void onBackPressed() {
         Intent returnedIntent = new Intent();
         returnedIntent.putExtra("user", user);
         setResult(Activity.RESULT_OK, returnedIntent);
-        finish();
+        super.onBackPressed();
     }
 }
