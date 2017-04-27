@@ -11,23 +11,29 @@ import java.util.ArrayList;
 
 public class User implements Parcelable {
     private double fund;
-
+    private ArrayList<Book> books;
     private ArrayList<Book> cart;
 
     public User() {
+        books = new ArrayList<>();
         cart = new ArrayList<>();
     }
 
-    @SuppressWarnings({"unchecked", "MismatchedReadAndWriteOfArray"})
     public User(Parcel in) {
+        books = new ArrayList<>();
         cart = new ArrayList<>();
         fund = in.readDouble();
+        in.readList(books, Book.class.getClassLoader());
         in.readList(cart, Book.class.getClassLoader());
     }
 
     public double getFund() { return fund; }
 
     public void setFund(double fund) { this.fund = fund; }
+
+    public ArrayList<Book> getBooks() { return books; }
+
+    public void setBooks(ArrayList<Book> books) { this.books = books; }
 
     public ArrayList<Book> getCart() { return cart; }
 
@@ -55,7 +61,9 @@ public class User implements Parcelable {
                 return false;
             }
         }
+
         fund -= price;
+        books.addAll(cart);
         cart.clear();
         return true;
     }
@@ -66,6 +74,7 @@ public class User implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeDouble(fund);
+        dest.writeList(books);
         dest.writeList(cart);
     }
 

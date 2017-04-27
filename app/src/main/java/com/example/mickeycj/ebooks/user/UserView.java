@@ -8,7 +8,7 @@ public interface UserView {
 
     void updateFund();
 
-    void updateCart();
+    void updateBooks();
 
     double getAddFundAmount();
 

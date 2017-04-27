@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_user"
-    android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true"
+    android:id="@+id/activity_cart"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,63 +10,55 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="0.01"
+        android:layout_weight="0.075"
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/textview_fund_amount"
-            android:textSize="12pt"
+            android:id="@+id/textview_fund"
+            android:textSize="10pt"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="0.45"/>
+            android:layout_weight="0.5"/>
 
-        <EditText
-            android:id="@+id/edittext_add_amount"
-            android:digits="0123456789."
-            android:inputType="numberDecimal"
-            android:hint="@string/add_amount"
-            android:textSize="12pt"
+        <TextView
+            android:id="@+id/textview_price"
+            android:textSize="10pt"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"/>
-
-        <Button
-            android:text="@string/add_fund"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:onClick="onAddFundsClick"/>
+            android:layout_weight="0.5"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="0.01"
+        android:layout_weight="0.075"
         android:weightSum="1">
 
-        <TextView
-            android:text="@string/books_text"
-            android:textSize="12pt"
+        <Button
+            android:id="@+id/button_purchase"
+            android:text="@string/purchase"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="0.7"/>
+            android:layout_weight="0.5"
+            android:onClick="onPurchaseClick"/>
 
         <Button
-            android:text="@string/to_cart"
+            android:id="@+id/button_clear_cart"
+            android:text="@string/clear_cart"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:onClick="onToCartClick"/>
+            android:layout_weight="0.5"
+            android:onClick="onClearCartClick"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="0.6">
 
         <ListView
-            android:id="@+id/listview_books_list"
+            android:id="@+id/listview_cart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

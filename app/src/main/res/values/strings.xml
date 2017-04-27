@@ -11,7 +11,8 @@
     <string name="add_to_cart">Add To Cart</string>
     <string name="add_amount">Amount</string>
     <string name="add_fund">Add Funds</string>
-    <string name="cart_text">CART</string>
+    <string name="books_text">BOOKS</string>
+    <string name="to_cart">Cart</string>
     <string name="purchase">Purchase</string>
     <string name="clear_cart">Clear Cart</string>
 </resources>

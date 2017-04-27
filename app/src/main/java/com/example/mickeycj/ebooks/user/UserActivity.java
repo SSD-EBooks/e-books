@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.mickeycj.ebooks.R;
+import com.example.mickeycj.ebooks.cart.CartActivity;
 import com.example.mickeycj.ebooks.data.Book;
 import com.example.mickeycj.ebooks.data.User;
 
@@ -18,11 +19,11 @@ public class UserActivity extends AppCompatActivity implements UserView {
     private User user;
     private UserPresenter presenter;
 
-    private ArrayAdapter<Book> cardAdapter;
+    private ArrayAdapter<Book> booksAdapter;
 
     private TextView fundTextView;
     private EditText addFundEditText;
-    private ListView cartListView;
+    private ListView booksListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class UserActivity extends AppCompatActivity implements UserView {
     private void initViewHolders() {
         fundTextView = (TextView) findViewById(R.id.textview_fund_amount);
         addFundEditText = (EditText) findViewById(R.id.edittext_add_amount);
-        cartListView = (ListView) findViewById(R.id.listview_cart_list);
+        booksListView = (ListView) findViewById(R.id.listview_books_list);
     }
 
     @Override
@@ -49,22 +50,31 @@ public class UserActivity extends AppCompatActivity implements UserView {
     }
 
     @Override
-    public void updateCart() {
-        cardAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.getCart());
-        cartListView.setAdapter(cardAdapter);
+    public void updateBooks() {
+        booksAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, user.getBooks());
+        booksListView.setAdapter(booksAdapter);
     }
 
     @Override
-    public double getAddFundAmount() { return Double.parseDouble(addFundEditText.getText().toString()); }
+    public double getAddFundAmount() {
+        try {
+            return Double.parseDouble(addFundEditText.getText().toString());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
     @Override
     public void clearAddFundAmount() { addFundEditText.setText(""); }
 
     public void onAddFundsClick(View view) { presenter.onAddFundsClick(getAddFundAmount()); }
 
-    public void onPurchaseClick(View view) { presenter.onPurchaseClick(); }
-
-    public void onClearCartClick(View view) { presenter.onClearCartClick(); }
+    public void onToCartClick(View view) {
+        Intent intent = new Intent(this, CartActivity.class);
+        intent.putExtra("user", user);
+        startActivityForResult(intent, 0);
+    }
 
     @Override
     public void onBackPressed() {
@@ -72,5 +82,15 @@ public class UserActivity extends AppCompatActivity implements UserView {
         returnedIntent.putExtra("user", user);
         setResult(Activity.RESULT_OK, returnedIntent);
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            user = data.getExtras().getParcelable("user");
+            updateFund();
+            updateBooks();
+        }
     }
 }

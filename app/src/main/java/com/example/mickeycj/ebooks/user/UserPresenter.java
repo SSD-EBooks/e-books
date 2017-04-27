@@ -17,23 +17,12 @@ public class UserPresenter {
 
     public void start() {
         view.updateFund();
-        view.updateCart();
+        view.updateBooks();
     }
 
     public void onAddFundsClick(double amount) {
         user.setFund(user.getFund() + amount);
         view.clearAddFundAmount();
         view.updateFund();
-    }
-
-    public void onPurchaseClick() {
-        user.buyBooks();
-        view.updateFund();
-        view.updateCart();
-    }
-
-    public void onClearCartClick() {
-        user.clearCart();
-        view.updateCart();
     }
 }
