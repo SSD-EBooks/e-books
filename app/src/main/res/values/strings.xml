@@ -3,14 +3,15 @@
     <string name="to_books">Books</string>
     <string name="to_user">User</string>
     <string name="to_main">Back</string>
-    <string name="add_amount">Amount</string>
-    <string name="add_fund">Add Funds</string>
-    <string name="cart_text">CART</string>
-    <string name="purchase">Purchase</string>
-    <string name="clear_cart">Clear Cart</string>
     <string name="search_bar_hint">Search here</string>
     <string name="search_by_title">Search Title</string>
     <string name="search_by_pub_year">Search Publication Year</string>
     <string name="sort_by_title">Sort By Title</string>
     <string name="sort_by_pub_year">Sort By Publication Year</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="add_amount">Amount</string>
+    <string name="add_fund">Add Funds</string>
+    <string name="cart_text">CART</string>
+    <string name="purchase">Purchase</string>
+    <string name="clear_cart">Clear Cart</string>
 </resources>

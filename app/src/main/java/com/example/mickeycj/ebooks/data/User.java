@@ -33,10 +33,14 @@ public class User implements Parcelable {
 
     public void setCart(ArrayList<Book> cart) { this.cart = cart; }
 
-    public void addToCart(Book... books) {
-        for (Book book : books) {
-            cart.add(book);
+    public void addToCart(Book book) { cart.add(book); }
+
+    public double getCartPrice() {
+        double price = 0;
+        for (Book book : cart) {
+            price += book.getPrice();
         }
+        return price;
     }
 
     public void clearCart() {
@@ -62,7 +66,7 @@ public class User implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeDouble(fund);
-        dest.writeTypedList(cart);
+        dest.writeList(cart);
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
