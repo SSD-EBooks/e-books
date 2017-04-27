@@ -58,10 +58,10 @@ public class BookActivity extends AppCompatActivity implements BookView {
     }
 
     @Override
-    public void updateUserFund() { userFundTextView.setText("Fund: " + (Double.toString(user.getFund()))); }
+    public void updateUserFund() { userFundTextView.setText(String.format("Fund: %.2f", user.getFund())); }
 
     @Override
-    public void updateCartPrice() { cartPriceTextView.setText("Cart Price: " + Double.toString(user.getCartPrice())); }
+    public void updateCartPrice() { cartPriceTextView.setText(String.format("Cart Price: %.2f", user.getCartPrice())); }
 
     public void onAddToCartClick(View view) { presenter.onAddToCartClick(); }
 

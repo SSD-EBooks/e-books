@@ -45,7 +45,7 @@ public class UserActivity extends AppCompatActivity implements UserView {
 
     @Override
     public void updateFund() {
-        fundTextView.setText((Double.toString(user.getFund())));
+        fundTextView.setText(String.format("%.2f", user.getFund()));
     }
 
     @Override
